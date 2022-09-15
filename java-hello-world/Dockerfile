@@ -3,4 +3,8 @@ COPY . /tmp/
 WORKDIR /tmp/
 RUN mvn package
 
-CMD mvn spring-boot:run
+FROM gcr.io/distroless/java11:latest
+
+COPY --from=MAVEN_TOOL_CHAIN /tmp/target/**.jar /tmp/app.jar
+
+CMD ["/tmp/app.jar"]

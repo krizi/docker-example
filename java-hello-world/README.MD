@@ -55,8 +55,16 @@ docker run -p 8080:8080 -d java-hello-world
 2022-09-12 15:05:46.333  INFO 45 --- [           main] ch.generali.example.Example              : Started Example in 4.176 seconds (JVM running for 4.728)
 
 ```
+# Docker size
+## maven:3.5.2-jdk-8-alpine
+```
+FROM maven:3.5.2-jdk-8-alpine AS MAVEN_TOOL_CHAIN
+...
+CMD mvn spring-boot:run
+```
+size will be around 200MB
 
-
+## java-scratch
 
 # see 
 * https://spring.io/guides/gs/spring-boot/
